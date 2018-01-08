@@ -73,6 +73,14 @@ public class IUserServiceImpl implements IUserService {
         return resultInfo;
     }
 
+    @Override
+    public List<User> queryAllCustomerManager() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("isValid", 1);
+        List<User> users = userDao.find(map);
+        return users;
+    }
+
 
     /**
      *

@@ -10,4 +10,8 @@ public interface IMarketingService {
     public Map<String, Object> querySaleChancesByParams(SaleChance saleChance);
 
     public ResultInfo insertMarketing(SaleChance saleChance);
+
+    public ResultInfo updateMarketing(SaleChance saleChance);
+
+    public ResultInfo deleteMarketing(Integer[] ids);
 }

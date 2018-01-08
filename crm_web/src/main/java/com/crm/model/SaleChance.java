@@ -1,11 +1,17 @@
 package com.crm.model;
 
+import com.crm.framework.constant.CrmConstant;
 import com.crm.utils.BaseModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 /**
  *  营销机会 model
+ *  JsonFormat ：出参
+
+ DateTimeFormate ： 入参
  */
 public class SaleChance extends BaseModel{
     /**
@@ -96,12 +102,16 @@ public class SaleChance extends BaseModel{
      * create_date
      * 
      */
+    @DateTimeFormat(pattern=CrmConstant.DATE_FORMATE_YMDHMS)
+    @JsonFormat(pattern=CrmConstant.DATE_FORMATE_YMDHMS)
     private Date createDate;
 
     /**
      * update_date
      * 
      */
+    @DateTimeFormat(pattern=CrmConstant.DATE_FORMATE_YMDHMS)
+    @JsonFormat(pattern=CrmConstant.DATE_FORMATE_YMDHMS)
     private Date updateDate;
 
     public Integer getId() {

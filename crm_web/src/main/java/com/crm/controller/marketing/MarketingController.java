@@ -7,6 +7,7 @@ import com.crm.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -47,7 +48,7 @@ public class MarketingController extends BaseController{
      *  条件查询共用 controller
      * @return
      */
-    @RequestMapping("/querySaleChancesByParams")
+    @PostMapping("/querySaleChancesByParams")
     @ResponseBody
     public Map<String ,Object> querySaleChancesByParams(SaleChance saleChance) {
 
@@ -55,10 +56,23 @@ public class MarketingController extends BaseController{
     }
 
     //添加 营销机会
-    @RequestMapping("/insert")
+    @PostMapping("/insert")
     @ResponseBody
     public ResultInfo insertMarketing(SaleChance saleChance){
         return marketingService.insertMarketing(saleChance);
+    }
+
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public ResultInfo updateMarketing(SaleChance saleChance) {
+        return marketingService.updateMarketing(saleChance);
+    }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public ResultInfo deleteMarketing(Integer[] ids){
+        return marketingService.deleteMarketing(ids);
     }
 
 

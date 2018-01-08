@@ -4,12 +4,15 @@ import com.crm.dao.SaleChanceDao;
 import com.crm.model.SaleChance;
 import com.crm.service.IMarketingService;
 import com.crm.utils.ResultInfo;
+import com.crm.utils.StringUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,12 +32,12 @@ public class IMarketingServiceImpl implements IMarketingService{
         Map<String ,Object> params = new HashMap<>();
 
         //条件查询  创建人
-        if(saleChance.getCreateMan()!=null){
+        if(StringUtil.isNotEmpty(saleChance.getCreateMan())){
             params.put("createMan", saleChance.getCreateMan());
         }
 
         //条件查询 客户名称
-        if(saleChance.getCustomerName()!=null){
+        if(StringUtil.isNotEmpty(saleChance.getCustomerName())){
             params.put("customerName", saleChance.getCustomerName());
         }
 
@@ -61,12 +64,59 @@ public class IMarketingServiceImpl implements IMarketingService{
     }
 
     @Override
+    @Transactional
     public ResultInfo insertMarketing(SaleChance saleChance) {
+        saleChance.setCreateDate(new Date());
+        saleChance.setUpdateDate(new Date());
+        saleChance.setIsValid(1);
+        saleChance.setState(1); //已分配
         long saveSte = saleChanceDao.saveSte(saleChance);
         ResultInfo resultInfo = new ResultInfo();
         if(saveSte!=1){
             resultInfo.setCode(500);
             resultInfo.setMsg("添加失败");
+        }
+        return resultInfo;
+    }
+
+    @Override
+    @Transactional
+    public ResultInfo updateMarketing(SaleChance saleChance) {
+        ResultInfo resultInfo = new ResultInfo();
+        long updateSte = saleChanceDao.updateSte(saleChance);
+        if(updateSte!=1){
+            resultInfo.setCode(500);
+            resultInfo.setMsg("更新失败");
+        }
+        return resultInfo;
+    }
+
+    @Override
+    @Transactional
+    public ResultInfo deleteMarketing(Integer[] ids) {
+        ResultInfo resultInfo = new ResultInfo();
+
+        if(ids.length <= 0){
+            resultInfo.setMsg("未选中记录");
+            resultInfo.setCode(500);
+            return  resultInfo;
+        }
+        SaleChance saleChance = null;
+        int number = 0;
+
+        for(int i = 0;i<ids.length;i++){
+
+            saleChance = new SaleChance();
+            saleChance.setId(ids[i]);
+            saleChance.setIsValid(0);
+            saleChance.setUpdateDate(new Date());
+            long updateSte = saleChanceDao.updateSte(saleChance);
+            number+=updateSte;
+        }
+
+        if (number != ids.length) {
+            resultInfo.setCode(500);
+            resultInfo.setMsg("删除失败");
         }
         return resultInfo;
     }
