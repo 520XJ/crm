@@ -3,6 +3,7 @@ package com.crm.controller.marketing;
 import com.crm.framework.context.BaseController;
 import com.crm.model.SaleChance;
 import com.crm.service.IMarketingService;
+import com.crm.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +52,13 @@ public class MarketingController extends BaseController{
     public Map<String ,Object> querySaleChancesByParams(SaleChance saleChance) {
 
         return marketingService.querySaleChancesByParams(saleChance);
+    }
+
+    //添加 营销机会
+    @RequestMapping("/insert")
+    @ResponseBody
+    public ResultInfo insertMarketing(SaleChance saleChance){
+        return marketingService.insertMarketing(saleChance);
     }
 
 

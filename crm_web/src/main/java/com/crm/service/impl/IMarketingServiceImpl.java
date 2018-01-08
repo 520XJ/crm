@@ -3,6 +3,7 @@ package com.crm.service.impl;
 import com.crm.dao.SaleChanceDao;
 import com.crm.model.SaleChance;
 import com.crm.service.IMarketingService;
+import com.crm.utils.ResultInfo;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -57,5 +58,16 @@ public class IMarketingServiceImpl implements IMarketingService{
         map.put("total", pageInfo.getTotal());
         map.put("rows", pageInfo.getList());
         return  map;
+    }
+
+    @Override
+    public ResultInfo insertMarketing(SaleChance saleChance) {
+        long saveSte = saleChanceDao.saveSte(saleChance);
+        ResultInfo resultInfo = new ResultInfo();
+        if(saveSte!=1){
+            resultInfo.setCode(500);
+            resultInfo.setMsg("添加失败");
+        }
+        return resultInfo;
     }
 }
