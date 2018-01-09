@@ -13,7 +13,7 @@
                 <img alt="logo" src="${ctx}/images/bglogo.png">
             </td>
             <td valign="bottom" align="right" width="50%">
-                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong><span id="userInfo">${userName}|【${trueName}】</span></font>
+                <font size="3">&nbsp;&nbsp;<strong>欢迎：</strong><span id="userInfo">${userName!"sxt"}|【${trueName!"sxt" }】</span></font>
             </td>
         </tr>
     </table>

@@ -9,23 +9,23 @@
 <body>
 	<table id="dg" class="easyui-datagrid"  pagination=true 
 	     rownumbers=true    toolbar="#tb" fit=true url="${ctx}/marketing/querySaleChancesByParams">   
-        <thead>
-            <tr>
-                <th field='cb' checkbox=true >id</th>
-                <th field='chanceSource'>机会来源</th>
-                <th field='customerName'>客户名称</th>
-                <th field='cgjl'  >成功几率(%)</th>
-                <th field='overview'>概要</th>
-                <th field='linkMan'>联系人</th>
-                <th field='linkPhone'>联系电话</th>
-                <th field='description'>描述</th>
-                <th field='createMan'>创建人</th>
-                <th field='state' formatter="formatterState">分配状态</th>
-                <th field='createDate'>创建时间</th>
-                <th field='updateDate'>更新时间</th>
-            </tr>
-        </thead>
-    </table>
+    <thead>   
+        <tr>
+            <th field='cb' checkbox=true >id</th>    
+            <th field='chanceSource'>机会来源</th>   
+            <th field='customerName'>客户名称</th>   
+            <th field='cgjl'  >成功几率(%)</th>
+            <th field='overview'>概要</th>
+            <th field='linkMan'>联系人</th>
+            <th field='linkPhone'>联系电话</th>
+            <th field='description'>描述</th>
+            <th field='createMan'>创建人</th>
+            <th field='state' formatter="formatterState">分配状态</th>
+            <th field='createDate'>创建时间</th>
+            <th field='updateDate'>更新时间</th>
+        </tr>   
+    </thead>   
+</table>
 
 <div id="tb">
    <#if userPermission?seq_contains('101001')>
