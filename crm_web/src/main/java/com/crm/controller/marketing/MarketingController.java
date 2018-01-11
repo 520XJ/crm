@@ -75,5 +75,19 @@ public class MarketingController extends BaseController{
         return marketingService.deleteMarketing(ids);
     }
 
+    /**
+     *  营销管理，客户开发计划    设置开发状态--> 成功
+     *
+     * @param devResult  开发状态   1，开发   2，开发成功  3，开发失败
+     * @param sid
+     * @return
+     */
+    @PostMapping("/updateSaleChanceDevResult")
+    @ResponseBody
+    public ResultInfo updateSaleChanceDevResult(Integer devResult,Integer sid) {
+
+        return marketingService.updateSaleChanceDevResult(devResult,sid);
+    }
+
 
 }

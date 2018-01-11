@@ -120,4 +120,20 @@ public class IMarketingServiceImpl implements IMarketingService{
         }
         return resultInfo;
     }
+
+    @Override
+    public ResultInfo updateSaleChanceDevResult(Integer devResult, Integer sid) {
+
+        ResultInfo resultInfo = new ResultInfo();
+        SaleChance saleChance = new SaleChance();
+        saleChance.setId(sid);
+        saleChance.setDevResult(devResult);
+        saleChance.setUpdateDate(new Date());
+        long updateSte = saleChanceDao.updateSte(saleChance);
+        if(updateSte!=1){
+            resultInfo.setCode(500);
+            resultInfo.setMsg("设置状态失败");
+        }
+        return resultInfo;
+    }
 }

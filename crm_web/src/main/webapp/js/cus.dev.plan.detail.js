@@ -63,7 +63,7 @@ function delCusDevPlan(){
 }
 
 
-
+// 开发成功
 function updateSaleChanceDevResult(devResult){
 	$.messager.confirm("来自crm","确认执行该操作?",function(r){
 		if(r){

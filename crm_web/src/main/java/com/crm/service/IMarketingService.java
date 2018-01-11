@@ -14,4 +14,6 @@ public interface IMarketingService {
     public ResultInfo updateMarketing(SaleChance saleChance);
 
     public ResultInfo deleteMarketing(Integer[] ids);
+
+    public ResultInfo updateSaleChanceDevResult(Integer devResult,Integer sid);
 }

@@ -66,4 +66,20 @@ public class ICusDevPlanImpl implements ICusDevPlanService {
         }
         return resultInfo;
     }
+
+    @Override
+    public ResultInfo deleteCusDevPlanById(Integer id) {
+        ResultInfo resultInfo = new ResultInfo();
+        CusDevPlan cusDevPlan = new CusDevPlan();
+        cusDevPlan.setId(id);
+        cusDevPlan.setIsValid(0);
+        cusDevPlan.setUpdateDate(new Date());
+        long updateSte = cusDevPlanDao.updateSte(cusDevPlan);
+        if (updateSte != 1) {
+            resultInfo.setCode(500);
+            resultInfo.setMsg("删除失败");
+        }
+        return resultInfo;
+    }
+
 }

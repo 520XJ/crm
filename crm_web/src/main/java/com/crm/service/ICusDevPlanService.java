@@ -14,4 +14,6 @@ public interface ICusDevPlanService {
 
     public ResultInfo insertCusDevPlan(CusDevPlan cusDevPlan);
 
+    public ResultInfo deleteCusDevPlanById(Integer id);
+
 }

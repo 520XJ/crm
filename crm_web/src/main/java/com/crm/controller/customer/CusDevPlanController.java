@@ -42,4 +42,12 @@ public class CusDevPlanController extends BaseController {
     public ResultInfo insertCusDevPlan(CusDevPlan cusDevPlan){
         return cusDevPlanService.insertCusDevPlan(cusDevPlan);
     }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public ResultInfo deleteCusDevPlanById(@RequestParam("id") Integer id) {
+
+        return cusDevPlanService.deleteCusDevPlanById(id);
+    }
+
 }
