@@ -71,7 +71,7 @@ function deleteCustomer(){
 }
 
 
-
+//历史订单
 function openCustomerOtherInfo(title,type){
 	var rows=$("#dg").datagrid("getSelections");
 	if(rows.length==0){
