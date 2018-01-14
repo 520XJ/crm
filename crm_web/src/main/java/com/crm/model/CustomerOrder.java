@@ -1,6 +1,9 @@
 package com.crm.model;
 
+import com.crm.framework.constant.CrmConstant;
 import com.crm.utils.BaseQuery;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -45,12 +48,16 @@ public class CustomerOrder extends BaseQuery{
      * create_date
      * 创建时间
      */
+    @JsonFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
+    @DateTimeFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
     private Date createDate;
 
     /**
      * update_date
      * 更新时间
      */
+    @JsonFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
+    @DateTimeFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
     private Date updateDate;
 
     /**

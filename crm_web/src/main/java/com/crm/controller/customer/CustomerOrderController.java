@@ -22,7 +22,7 @@ public class CustomerOrderController {
      */
     @RequestMapping("/queryOrdersByCid")
     @ResponseBody
-    public Map<String, Object> queryOrdersByCid(Integer cid,
+    public Map<String, Object> queryOrdersByCid(@RequestParam("cid")Integer cid,
                                                 @RequestParam(defaultValue = "1") Integer page,
                                                 @RequestParam(defaultValue = "10") Integer rows) {
 
@@ -31,7 +31,7 @@ public class CustomerOrderController {
 
     @PostMapping("/queryCustoemrOrderByOrderId")
     @ResponseBody
-    public Map<String, Object> queryCustoemrOrderByOrderId(Integer orderId,
+    public Map<String, Object> queryCustoemrOrderByOrderId(@RequestParam("orderId") Integer orderId,
                                                             @RequestParam(defaultValue = "1") Integer page,
                                                             @RequestParam(defaultValue = "10") Integer rows) {
 
