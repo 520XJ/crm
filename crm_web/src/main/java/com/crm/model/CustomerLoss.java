@@ -1,6 +1,9 @@
 package com.crm.model;
 
+import com.crm.framework.constant.CrmConstant;
 import com.crm.utils.BaseQuery;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -57,18 +60,23 @@ public class CustomerLoss extends BaseQuery{
      * is_valid
      * 
      */
+
     private Integer isValid;
 
     /**
      * create_date
      * 
      */
+    @JsonFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
+    @DateTimeFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
     private Date createDate;
 
     /**
      * update_date
      * 
      */
+    @JsonFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
+    @DateTimeFormat(pattern = CrmConstant.DATE_FORMATE_YMDHMS)
     private Date updateDate;
 
     public Integer getId() {
